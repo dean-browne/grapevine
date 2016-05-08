@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Grapevine - </title>
+  <!-- Bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap-theme.min.css" %}" />
+  <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}" />
+  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+
+  <!-- TODO Just for testing purposes -->
+  <link rel="stylesheet" type="text/css" href="{% static "responsive-slides/css/responsiveslides.css" %}" />
+{% include "header.html" %}
+<div class="wrap">
+    <!-- Set up the slideshow here and then move it just the home app after i create the home app -->
+    <!-- http://responsiveslides.com/ Think i may use this one!-->
+
+
+<div class="content">
+{% block content %} {% endblock %}
+{% include "footer.html" %}
+</div> <!-- End of content div -->
+</div> <!-- End of wrap div -->
+<!-- JQuery First-->
+<script src="{% static "jquery/jquery-1.12.3.min.js" %}"></script>
+<!-- Javascript -->
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+
+<!-- TODO Just for testing purposes -->
+<script src="{% static "responsive-slides/js/responsiveslides.min.js" %}"></script>
+</body>
+</html>

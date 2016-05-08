@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Recent Posts</h1>
+{% if post_list %}
+  {% for post in post_list %}
+  <p>Id: {{ post.id }}</p>
+  <p>Post: {{ post.post }}</p>
+  <p>User: {{post.user.username }}</p>
+  <p><a href="{% url 'home:detail' post.id %}">More</a></p>
+  {% endfor %}
+
+{% else %}
+  <p>There are no posts</p>
+  <p>Check back later</p>
+{% endif %}
+{% endblock %}
