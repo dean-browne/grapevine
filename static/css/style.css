@@ -1,0 +1,28 @@
+/* Site wide theming */
+
+body {
+  max-width: 90%;
+  margin: auto;
+}
+
+/* TODO -> Find a better way to do this */
+.content {
+  padding-top: 100px;
+}
+
+/* Logo at the top */
+.logo_main {
+  max-height: 100px;
+  width: auto;
+}
+
+
+
+
+
+/* All images on the site */
+.img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
