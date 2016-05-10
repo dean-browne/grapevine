@@ -6,7 +6,6 @@ in the database!
 
 
 Need to test how we respond to the same user being registered twice!
-
 """
 
 from django.shortcuts import render
