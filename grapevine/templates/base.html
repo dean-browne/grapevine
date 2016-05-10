@@ -16,15 +16,18 @@
   <!-- TODO Just for testing purposes -->
   <link rel="stylesheet" type="text/css" href="{% static "responsive-slides/css/responsiveslides.css" %}" />
 {% include "header.html" %}
-<div class="wrap">
-    <!-- Set up the slideshow here and then move it just the home app after i create the home app -->
-    <!-- http://responsiveslides.com/ Think i may use this one!-->
-
-
-<div class="content">
+<div class="wrap col-md-12">
+<div class="content col-md-7">
 {% block content %} {% endblock %}
 {% include "footer.html" %}
 </div> <!-- End of content div -->
+
+<!-- Test the sidebar -->
+<div class="sidebar col-md-4">
+  <h4>Sidebar test</h4>
+</div><!-- End of Sidebar div -->
+
+
 </div> <!-- End of wrap div -->
 <!-- JQuery First-->
 <script src="{% static "jquery/jquery-1.12.3.min.js" %}"></script>

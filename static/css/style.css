@@ -1,1 +1,13 @@
 /* Reste  */
+
+body {
+
+}
+
+.wrap {
+  margin-top: 60px;
+}
+
+.sidebar {
+  background-color: red;
+}
