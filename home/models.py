@@ -13,6 +13,8 @@ Database object for: Post
 class Post(models.Model):
     post = models.TextField(max_length=1000)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # Add points here!
+    votes = models.IntegerField(default=0)
     date = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
@@ -26,6 +28,7 @@ class Comment(models.Model):
     comment = models.TextField(max_length=1000)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    votes = models.IntegerField(default=0)
     date = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):

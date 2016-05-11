@@ -6,13 +6,22 @@
 }
 
 /* Everything within the content (Might not need this) */
+.content {
 
-/*  */
+}
+
+/* Recent posts */
 .recent-post {
   background-color: red;
   padding-top: 20px;
 }
 
+.grapevine-form {
+  padding-top: 50px;
+}
+
+/* Sidebar (Not using it at the moment)
 .sidebar {
   background-color: red;
 }
+*/

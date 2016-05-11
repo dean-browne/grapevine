@@ -2,7 +2,7 @@
 
 Admin account currently doesn't work on the site as it is hashing the username
 Easiest solution is to figure out what the hash of "Admin" is and then store that
-in the database!
+in the database! But I don't think I will be needing it either
 
 
 Need to test how we respond to the same user being registered twice!

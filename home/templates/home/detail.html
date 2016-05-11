@@ -3,9 +3,10 @@
 {% block content %}
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<p>Id: {{ post.id }}</p>
-<p>Post: {{ post.post }}</p>
-<p>User: {{ post.user.username }}</p>
+
+<p>{{ post.post }}</p>
+<p>Posted on: {{post.date }}</p>
+<p>Votes: {{ post.votes }}</p>
 
 {% if user.is_authenticated %}
 <h2>Add Comment<h2>
@@ -21,6 +22,13 @@
   <p>Id: {{ comment.id}}</p>
   <p>Comment: {{ comment.comment }}</p>
   <p>User: {{ comment.user.username }}</p>
+
+  <p>Posted on: {{comment.date }}</p>
+  <p>Votes: {{ comment.votes }}</p>
+
+  <a href="#">Vote up</a>
+  <a href="#">Vote Down</a>
+
 {% endfor %}
 
 

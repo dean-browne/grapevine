@@ -6,7 +6,10 @@
   <div class="recent-post">
     <p>{{ post.post }}</p>
     <p>Posted on: {{post.date }}</p>
+    <p>Votes: {{ post.votes }}</p>
     <p><a href="{% url 'home:detail' post.id %}">(Num)Comments</a></p>
+    <a href="#">Vote up</a>
+    <a href="#">Vote Down</a>
   </div>
 
   {% endfor %}
