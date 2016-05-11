@@ -16,15 +16,36 @@
   <!-- TODO Just for testing purposes -->
   <link rel="stylesheet" type="text/css" href="{% static "responsive-slides/css/responsiveslides.css" %}" />
 {% include "header.html" %}
-<div class="wrap col-md-12">
+<div class="wrap">
 <div class="content col-md-7">
 {% block content %} {% endblock %}
 {% include "footer.html" %}
 </div> <!-- End of content div -->
 
-<!-- Test the sidebar -->
+<!-- Test the sidebar  (Have turned this off for now to work on other things)-->
+<!--
 <div class="sidebar col-md-4">
   <h4>Sidebar test</h4>
+
+  <div id="lipsum">
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur consectetur leo sit amet vehicula malesuada. Nunc malesuada lorem sit amet nulla scelerisque, at finibus sapien rutrum. Morbi nec nulla enim. Ut porta turpis ut justo vestibulum, at lacinia lorem eleifend. Nunc nunc dolor, ullamcorper id mi sit amet, aliquam ultrices leo. Nulla ultricies lectus eros, vitae euismod lorem maximus non. Phasellus ex mi, ultrices sollicitudin elit sit amet, accumsan auctor velit. Sed ut vulputate mi. Quisque at placerat nisl. Mauris ullamcorper tortor vitae pulvinar cursus. In mattis, nibh ac pharetra tristique, erat dui molestie elit, eget molestie nulla augue sed ante. Mauris et ipsum ac eros porttitor faucibus a non orci. Nullam fringilla aliquet leo a mattis. Vivamus eleifend lectus id mauris pretium, ac efficitur justo hendrerit. Duis feugiat urna in erat porttitor, a pretium nisl tincidunt.
+  </p>
+  <p>
+  Vestibulum ullamcorper nisl neque, eu scelerisque diam molestie vel. Curabitur ultrices sagittis leo, in eleifend sem volutpat eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras odio elit, pharetra in cursus in, imperdiet pulvinar velit. Sed ornare lorem urna, eget eleifend erat mollis nec. Nam tincidunt neque sit amet diam finibus facilisis. Vivamus fringilla nibh quis luctus fringilla. Maecenas ut orci sit amet lorem semper tempor.
+  </p>
+  <p>
+  Nulla molestie nisl vel massa molestie ornare. In ornare tellus ac porttitor maximus. Phasellus porta diam sit amet nisl semper vulputate. Aenean elementum est vitae tempor ullamcorper. Nam finibus eget diam vel feugiat. Integer a lectus in ligula rhoncus volutpat. Cras pharetra risus a ante auctor, eget mattis tortor accumsan. Ut iaculis justo nulla. Aenean tortor ipsum, iaculis vitae tellus malesuada, suscipit laoreet dui. Quisque vitae egestas neque, ac facilisis sapien. Suspendisse vitae aliquam libero, auctor pulvinar ligula. Praesent at velit ornare, pulvinar tortor quis, cursus quam.
+  </p>
+  <p>
+  Quisque rutrum maximus cursus. Etiam hendrerit felis orci, eget efficitur libero tincidunt et. Sed consequat, mauris eget varius mattis, purus nunc suscipit felis, et eleifend erat enim sit amet purus. Curabitur interdum purus a urna blandit volutpat. Suspendisse augue quam, maximus eu metus nec, volutpat sollicitudin lacus. Ut hendrerit nisi at urna sodales, eget blandit augue ultricies. Proin vel ex consequat, fringilla velit ac, tempus libero. Suspendisse gravida orci libero, nec malesuada tortor lobortis nec.
+  </p>
+  <p>
+  Cras auctor augue non tellus tristique fermentum. In aliquam ligula nec porttitor sagittis. Sed nec sem est. Ut fermentum cursus nibh, sit amet varius ligula maximus id. Mauris in faucibus nisi. Vivamus quis finibus mi. Duis et justo vehicula, volutpat felis vel, lobortis turpis. Integer posuere eu nisi ut tristique. Nulla cursus magna metus, sed posuere velit blandit in. Phasellus nec tempus ligula. Mauris accumsan faucibus aliquam. Sed eros ante, ultricies porta tincidunt a, vulputate a lectus.
+  </p></div>
+  <div id="generated">Generated 5 paragraphs, 448 words, 3002 bytes of <a href="http://www.lipsum.com/" title="Lorem Ipsum">Lorem Ipsum</a></div>
+  </div>
+
 </div><!-- End of Sidebar div -->
 
 

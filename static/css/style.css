@@ -1,11 +1,16 @@
-/* Reste  */
+/* Reset everything */
 
-body {
-
+/* Everything within the wrap */
+.wrap {
+  padding-top: 60px;
 }
 
-.wrap {
-  margin-top: 60px;
+/* Everything within the content (Might not need this) */
+
+/*  */
+.recent-post {
+  background-color: red;
+  padding-top: 20px;
 }
 
 .sidebar {
