@@ -1,40 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="grapevine-form login-form">
+      <form method="POST" action=".?next={{ redirect_to }}" class="form-horizontal">
+        {% csrf_token %}
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <div class="form-group">
+          <label for="username" class="control-label col-xs-2">Username</label>
+          <div class="col-xs-10">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username...">
+          </div>
+        </div>
 
-<div class="grapevine-form login-form">
-  <form method="POST" action=".?next={{ redirect_to }}" class="form-horizontal">
-    {% csrf_token %}
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <div class="form-group">
-      <label for="username" class="control-label col-xs-2">Username</label>
-      <div class="col-xs-10">
-        <input type="text" class="form-control" id="username" name="username" placeholder="Username...">
-      </div>
+        <div class="form-group">
+          <label for="password" class="control-label col-xs-2">Password</label>
+          <div class="col-xs-10">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password...">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-offset-2 col-xs-10">
+            <div class="checkbox">
+              <label><input type="checkbox">Remember Me</label>
+            </div>
+          </div>
+
+          <br/>
+          <br/>
+          <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+              <button type="submit" class="btn btn-primary">Login Now</button>
+            </div>
+          </div>
+
+        </form>
     </div>
 
-    <div class="form-group">
-      <label for="password" class="control-label col-xs-2">Password</label>
-      <div class="col-xs-10">
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password...">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="checkbox">
-          <label><input type="checkbox">Remember Me</label>
-        </div>
-      </div>
-
-      <br/>
-      <br/>
-      <div class="form-group">
-        <div class="col-xs-offset-2 col-xs-10">
-          <button type="submit" class="btn btn-primary">Login Now</button>
-        </div>
-      </div>
-
-    </form>
+  </div>
 </div>
 
 {% endblock %}

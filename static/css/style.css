@@ -1,5 +1,11 @@
 /* Reset everything */
 
+
+.wrap {
+  max-width: 90%;
+  margin: auto;
+}
+
 /* Everything within the wrap */
 .wrap {
   padding-top: 60px;

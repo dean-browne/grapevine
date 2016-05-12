@@ -6,6 +6,9 @@ in the database! But I don't think I will be needing it either
 
 
 Need to test how we respond to the same user being registered twice!
+
+Rename the hash_string module to something more fitting now that it contains
+the code to create random invite strings
 """
 
 from django.shortcuts import render
@@ -105,3 +108,14 @@ def register(request):
 
     else:
         return render(request, 'account/register.html')
+
+"""
+    View for creating a invite key
+"""
+@login_required
+def create_new_invite_key(request):
+    if request.method == "POST":
+        key_generator = hash_string.StringEncryption()
+        generated_key = key_generator.generate_invite_key()
+        print "[+] Generated a new key: " + generated_key
+        # Store the key in the database and redirect the user to the database.

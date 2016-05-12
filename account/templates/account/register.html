@@ -1,3 +1,6 @@
+<!-- Change the things that i turned to 98 back to ten as they are fucking with the layout on mobile
+    Check to make sure the real password wasn't accidentally uploaded to the server!!! -->
+
 {% extends "base.html" %}
 {% block content %}
 <form method="POST" action=".?next={{ redirect_to }}" class="form-horizontal">
@@ -6,34 +9,34 @@
 
   <div class="form-group">
     <label for="username" class="control-label col-xs-2">Username</label>
-    <div class="col-xs-8">
+    <div class="col-xs-10">
       <input type="text" class="form-control" id="username" name="username" placeholder="Username..."/>
     </div>
   </div>
 
   <div class="form-group">
     <label for="password" class="control-label col-xs-2">Password</label>
-    <div class="col-xs-8">
+    <div class="col-xs-10">
       <input type="password" class="form-control" id="password" name="password" placeholder="Password..."/>
     </div>
   </div>
 
   <div class="form-group">
     <label for="repeat_password" class="control-label col-xs-2">Repeat Password</label>
-    <div class="col-xs-8">
+    <div class="col-xs-10">
       <input type="password" class="form-control" id="repeat_password" name="repeat_password" placeholder="Repeat Password..."/>
     </div>
   </div>
 
   <div class="form-group">
     <label for="invite-key" class="control-label col-xs-2">Invite Key</label>
-    <div class="col-xs-8">
+    <div class="col-xs-10">
       <input type="text" class="form-control" id="invite-key" name="invite-key" placeholder="Invite Key"/>
     </div>
   </div>
 
   <div class="form-group">
-    <div class="col-xs-offset-2 col-xs-8">
+    <div class="col-xs-offset-2 col-xs-10">
       <div class="checkbox">
         <label><input type="checkbox">By clicking this check box you.... (Finish this)</label>
       </div>
@@ -42,8 +45,11 @@
     <br/><br/>
 
     <div class="form-group">
-      <div class="col-xs-offset-2 col-xs-8">
+      <div class="col-xs-offset-2 col-xs-10">
         <button type="submit" class="btn btn-primary">Register Now</button>
       </div>
     </div>
+
+    <p>Already Registered? <a href="{% url 'account:login' %}">Login Here</a></p>
+
 {% endblock %}
