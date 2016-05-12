@@ -1,14 +1,11 @@
 """
 
-Admin account currently doesn't work on the site as it is hashing the username
-Easiest solution is to figure out what the hash of "Admin" is and then store that
-in the database! But I don't think I will be needing it either
+This is starting to get messy... In particular the register method
+For now i might create some helper functions for the registser function
+But I think it would be best to look into some class based view system
 
+Need to test the key generation for users!
 
-Need to test how we respond to the same user being registered twice!
-
-Rename the hash_string module to something more fitting now that it contains
-the code to create random invite strings
 """
 
 from django.shortcuts import render
@@ -18,8 +15,11 @@ from django.core.urlresolvers import reverse
 from grapevine import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
+from datetime import datetime
 
 from cryptonic import hash_string
+from .models import InviteKey
+
 
 """
 View for: Logging in
@@ -58,18 +58,8 @@ def logout(request):
 
 
 """
-View for: The Dashboard
-Requires login
-"""
-@login_required
-def dash(request):
-    permission_list = request.user.get_all_permissions()
-    return render(request, 'account/dash.html', {'permission_list': permission_list})
-
-
-"""
 View for registration
-Appears to be working
+Need to set this up so that it checks to see if the users key is valid
 """
 def register(request):
     if request.method == "POST":
@@ -93,12 +83,18 @@ def register(request):
                 return render(request, 'account/register.html', {'error_message': error_message})
 
             # Create the django user as normal but use the encrypted username
-            user = User.objects.create_user(username=hashed_username,
+            new_user = User.objects.create_user(username=hashed_username,
                                             password=password)
 
             # Add the user to the user group
             group = Group.objects.get(name='users')
-            group.user_set.add(user)
+            group.user_set.add(new_user)
+
+            user = authenticate(username=hashed_username, password=password)
+            if user is not None:
+                if user.is_active:
+                    auth_login(request, user)
+
             return HttpResponseRedirect(reverse('home:index'))
 
 
@@ -109,13 +105,61 @@ def register(request):
     else:
         return render(request, 'account/register.html')
 
+
+
 """
     View for creating a invite key
+
 """
+# TODO -> This function and the does_key_exist functions are core to the
+# functionality of the site.. They will require a lot of testing
 @login_required
 def create_new_invite_key(request):
-    if request.method == "POST":
-        key_generator = hash_string.StringEncryption()
+    key_generator = hash_string.InviteGenerator()
+    generated_key = key_generator.generate_invite_key()
+    invite_key_list = InviteKey.objects.filter(is_used=False)
+    key_exists = does_key_exist(generated_key, invite_key_list)
+
+    # Loop until the key is unique... This probably won't happen to often..
+    # TODO Calculate the maximum number of keys if the keys and 16 bits and
+    # see is it worth uppinng the keys to 32bit
+    while key_exists:
         generated_key = key_generator.generate_invite_key()
-        print "[+] Generated a new key: " + generated_key
-        # Store the key in the database and redirect the user to the database.
+        key_exists = does_key_exist(generated_key, invite_key_list)
+
+    print "[+] Generated a new key: " + generated_key
+    # Store the key in the database and redirect the user to the Dash.
+    new_invite_key = InviteKey(invite_key=generated_key, is_used=False, created_on=datetime.now(), created_by_id=request.user.id)
+    new_invite_key.save()
+    users_key_list = InviteKey.objects.filter(created_by_id=request.user.id, is_used=False)
+    # invite_key_list was filtered to contain keys created by all users so had to create users_key_list and filter to contain only this users keylist
+    return render(request, 'account/dash.html', {'generated_key': generated_key, 'invite_key_list': users_key_list})
+
+
+"""
+Helper function for create_new_invite_key.
+@params: key_requested, key_list
+Returns true if the key_requested already exists
+Returns False if the key is unique
+"""
+def does_key_exist(key_requested, key_list):
+    for key in key_list:
+        if key_requested == key:
+            print "[+] Trying to create key: " + key_requested + "\nKey already exists"
+            return True
+        else:
+            print "[+] Unique Key created: " + key_requested
+            return False
+
+"""
+View for: The Dashboard
+Requires login
+"""
+@login_required
+def dash(request):
+    permission_list = request.user.get_all_permissions()
+    # this does not seem to be filtering the way I would have liked
+    invite_key_list = InviteKey.objects.filter(created_by_id=request.user.id, is_used=False)
+
+
+    return render(request, 'account/dash.html', {'permission_list': permission_list, 'invite_key_list': invite_key_list})

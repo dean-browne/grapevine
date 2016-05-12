@@ -2,18 +2,26 @@
 {% block content %}
 <h1>Dash is still a work in progress!</h1>
 
+{% if generated_key %}
+  <h3>Generated New Key</h3>
+  <p><strong>{{ generated_key }}</strong></p>
+{% endif %}
+
+
 <!-- This has not been tested -->
 <div class="generated-invite-keys">
   <h2>Generated Invite Keys</h2>
-  {% for invite_key in user.invite_key %}
+  {% if invite_key_list %}
+  {% for invite_key in invite_key_list %}
     <p>{{ invite_key.invite_key}}</p>
     <p>{{ invite_key.created_by }}</p>
     <p>{{ invite.is_used }}</p>
     <p>{{ invite.created_on }}</p>
   {% endfor %}
+  {% endif %}
 </div>
 
 <p>Click this button to generate a new invite key. Send the Invite key to a friend and tell them about Grapevine</p>
 <p>Invite Keys can only be used once and used keys will dissapear from your dash</p>
-<button class="btn btn-primary" href="{% url 'account:create_new_invite_key' %}">Generate new Invite Key</button>
+<a href="{% url 'account:create_new_invite_key' %}" class="btn btn-primary">Generate New Invite Key</a>
 {% endblock %}

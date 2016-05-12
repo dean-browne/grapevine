@@ -22,9 +22,13 @@
   padding-top: 20px;
 }
 
+
 .grapevine-form {
   padding-top: 50px;
+  max-width: 50%;
+  margin: auto;
 }
+
 
 /* Sidebar (Not using it at the moment)
 .sidebar {

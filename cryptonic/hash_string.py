@@ -1,4 +1,6 @@
 import hashlib
+import random
+import string
 
 
 class StringEncryption:
@@ -11,7 +13,19 @@ class StringEncryption:
         hash_object = hashlib.md5(self.string_to_hash)
         return hash_object.hexdigest()
 
+
+class InviteGenerator:
+    def __init__(self):
+        pass
+
     # Generates a random 16 digit invite key
-    def generate_invite_key():
+    # Takes no parameters
+    def generate_invite_key(self):
         return ''.join(random.SystemRandom().choice(string.ascii_uppercase +
-                string.digits + string.ascii_lowercase) for _ in range(16))
+        string.digits + string.ascii_lowercase) for _ in range(16))
+
+
+"""
+Rewrite the AES 256 bit encryption from the other project but convert it from being
+procedural to being OO
+"""
