@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>Recent Posts</h3>
+<h1>Recent Posts</h1>
 {% if post_list %}
   {% for post in post_list %}
-  <div class="recent-post">
-    <p>{{ post.post }}</p>
-    <p>Posted on: {{post.date }}</p>
-    <p>Votes: {{ post.votes }}</p>
-    <p><a href="{% url 'home:detail' post.id %}">(Num)Comments</a></p>
-    <a href="#">Vote up</a>
-    <a href="#">Vote Down</a>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <p>{{ post.post }}</p>
+        <p>Posted on: {{ post.date }}</p>
+        <p>Votes: {{ post.votes }}</p>
+        <p><a href="{% url 'home:detail' post.id %}">(Num)Comments</a></p>
+        <a href="#">Vote up</a>
+        <a href="#">Vote Down</a>
+      </div>
+    </div>
   </div>
-
   {% endfor %}
 
 {% else %}

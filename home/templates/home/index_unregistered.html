@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron">
+    <h1>Grapevine</h1>
+  </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h3>If you have already registered please login</h3>
+      <a href="{% url 'account:login' %}" class="btn btn-success">Login</a>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h3>If you have an invite key please hit register</h3>
+      <a href="{% url 'account:register' %}" class="btn btn-warning">Register</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <p>Hi there!</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

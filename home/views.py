@@ -12,8 +12,13 @@ from .forms import PostForm, CommentForm
 View for: The homepage
 """
 def index(request):
-    post_list = Post.objects.order_by('-date')
-    return render(request, 'home/index.html', {'post_list': post_list})
+    if(request.user.is_authenticated()):
+        print "[+] User is authenticated"
+        post_list = Post.objects.order_by('-date')
+        return render(request, 'home/index.html', {'post_list': post_list})
+    else:
+        print "[+] User is not authenticated"
+        return render(request, 'home/index_unregistered.html')
 
 
 """

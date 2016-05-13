@@ -6,6 +6,9 @@ But I think it would be best to look into some class based view system
 
 Need to test the key generation for users!
 
+At the moment python anywhere seems to be having some issues with the most
+recently uploaded code.. Perhaps the issue is on their side?? Who knows
+
 """
 
 from django.shortcuts import render
@@ -19,6 +22,7 @@ from datetime import datetime
 
 from cryptonic import hash_string
 from .models import InviteKey
+from home.models import Post
 
 
 """
@@ -128,8 +132,8 @@ def create_new_invite_key(request):
         key_exists = does_key_exist(generated_key, invite_key_list)
 
     print "[+] Generated a new key: " + generated_key
-    # Store the key in the database and redirect the user to the Dash.
-    new_invite_key = InviteKey(invite_key=generated_key, is_used=False, created_on=datetime.now(), created_by_id=request.user.id)
+    # TODO -> Check if some of these values are set automatically
+    new_invite_key = InviteKey(invite_key=generated_key, is_used=False, created_by_id=request.user.id)
     new_invite_key.save()
     users_key_list = InviteKey.objects.filter(created_by_id=request.user.id, is_used=False)
     # invite_key_list was filtered to contain keys created by all users so had to create users_key_list and filter to contain only this users keylist
@@ -160,6 +164,12 @@ def dash(request):
     permission_list = request.user.get_all_permissions()
     # this does not seem to be filtering the way I would have liked
     invite_key_list = InviteKey.objects.filter(created_by_id=request.user.id, is_used=False)
+    post_list = Post.objects.filter(user_id=request.user.id).order_by('-date')
 
+    # Calculate the total votes
+    total_votes = 0
+    for post in post_list:
+        total_votes += post.votes
+    print "[+] User has %i", total_votes
 
-    return render(request, 'account/dash.html', {'permission_list': permission_list, 'invite_key_list': invite_key_list})
+    return render(request, 'account/dash.html', {'permission_list': permission_list, 'invite_key_list': invite_key_list, 'post_list': post_list, 'total_votes': total_votes})
