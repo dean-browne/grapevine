@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Recent Posts</h1>
 {% if post_list %}
   {% for post in post_list %}
   <div class="row">
     <div class="col-md-12">
       <div class="jumbotron">
+        <!--
+        <div class="post-img">
+          <img class="img-circle" src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fa666.phobos.apple.com%2Fus%2Fr30%2FPurple3%2Fv4%2Ff4%2F0b%2F51%2Ff40b5105-415d-36e9-fe1b-158612923c34%2Fimageeditor.512x512-75.png&f=1"
+          alt="Image!" width="200" height="200">
+        </div> -->
+
         <p>{{ post.post }}</p>
         <p>Posted on: {{ post.date }}</p>
         <p>Votes: {{ post.votes }}</p>
         <p><a href="{% url 'home:detail' post.id %}">(Num)Comments</a></p>
         <a href="#">Vote up</a>
         <a href="#">Vote Down</a>
+
+
       </div>
     </div>
   </div>

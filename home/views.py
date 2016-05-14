@@ -45,10 +45,10 @@ def newPost(request):
 """
 View for: The requested posts details (Displays the post and the posts comments)
 """
+@login_required
 def detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     comment_form = CommentForm
-    # Redirect this later so that it displays the post...
     return render(request, 'home/detail.html', {'post': post, 'comment_form': comment_form})
 
 

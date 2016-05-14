@@ -58,7 +58,7 @@ Requires login
 @login_required
 def logout(request):
     auth_logout(request)
-    return HttpResponseRedirect(settings.LOGIN_URL)
+    return HttpResponseRedirect(reverse('home:index'))
 
 
 """
@@ -104,7 +104,8 @@ def register(request):
 
         else:
             print "[-] Passwords don't match"
-            return render(request, 'account/register.html')
+            error_message = "Passwords do not match!"
+            return render(request, 'account/register.html', {'error_message': error_message})
 
     else:
         return render(request, 'account/register.html')

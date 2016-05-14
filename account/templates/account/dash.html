@@ -13,7 +13,7 @@
   {% endif %}
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7 jumbotron">
       <!-- Display the users posts -->
       {% if post_list %}
       <div class="my-posts">
@@ -29,10 +29,8 @@
       </div>
     </div>
 
-    <div class="col-md-6">
-      <p>Click this button to generate a new invite key. Send the Invite key to a friend and tell them about Grapevine</p>
-      <p>Invite Keys can only be used once and used keys will dissapear from your dash</p>
-      <a href="{% url 'account:create_new_invite_key' %}" class="btn btn-primary">Generate New Invite Key</a>
+    <div class="col-md-4">
+
     <!-- Display the users generated keys -->
     <div class="generated-invite-keys">
       <h2>Generated Invite Keys</h2>
@@ -42,6 +40,7 @@
         <p>Generated on: {{ invite.created_on }}</p>
       {% endfor %}
       {% endif %}
+      <a href="{% url 'account:create_new_invite_key' %}" class="btn btn-primary">Generate New Invite Key</a>
     </div>
   </div>
 
