@@ -3,33 +3,30 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="jumbotron">
     <h1>Grapevine</h1>
-  </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="jumbotron">
-      <h3>If you have already registered please login</h3>
-      <a href="{% url 'account:login' %}" class="btn btn-success">Login</a>
-    </div>
-  </div>
-
-  <div class="col-md-6">
-    <div class="jumbotron">
-      <h3>If you have an invite key please hit register</h3>
-      <a href="{% url 'account:register' %}" class="btn btn-warning">Register</a>
-    </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <div class="jumbotron">
-      <p>Hi there!</p>
-    </div>
+    <h3>Man is least himself when he talks in his own person. Give him a mask, and he will tell you the truth</h3>
+    <p> - Oscar Wilde</p>
   </div>
+</div>
+
+
+<div class="row jumbotron">
+  <div class="col-md-6 text-center">
+      <h3>If you have already registered please login</h3>
+      <a href="{% url 'account:login' %}" class="btn btn-success">Login</a>
+      <!-- TODO See if I can include the Login form -->
+  </div>
+
+  <div class="col-md-6 text-center">
+      <h3>If you have an invite key please hit register</h3>
+      <a href="{% url 'account:register' %}" class="btn btn-warning">Register</a>
+      <!-- TODO See if I can include the Register form -->
+  </div>
+
 </div>
 {% endblock %}

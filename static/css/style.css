@@ -1,37 +1,32 @@
-/* Reset everything */
-
-
-.wrap {
-  max-width: 90%;
-  margin: auto;
+h1 {
+  font-size: 2em;
 }
 
-/* Everything within the wrap */
+h2 {
+  font-size: 1.25em;
+}
+
+p {
+  font-size: 0.75em;
+}
+
 .wrap {
   padding-top: 60px;
 }
 
-/* Everything within the content (Might not need this) */
-.content {
-
-}
-
-/* Recent posts */
-.recent-post {
-  background-color: red;
-  padding-top: 20px;
-}
-
-
+/* Custom form style */
 .grapevine-form {
-  padding-top: 50px;
-  max-width: 50%;
+  padding-top: 60px;
+  max-width: 75%;
   margin: auto;
+  padding: 5%;
+  background-color: green;
 }
 
-
-/* Sidebar (Not using it at the moment)
-.sidebar {
-  background-color: red;
+.jumbotron {
+  max-width: 80%;
+  margin: auto;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  background-color: #303030;
 }
-*/

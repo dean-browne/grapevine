@@ -1,58 +1,44 @@
-<!-- Change the things that i turned to 98 back to ten as they are fucking with the layout on mobile
-    Check to make sure the real password wasn't accidentally uploaded to the server!!! -->
-
 {% extends "base.html" %}
 {% block content %}
-<form method="POST" action=".?next={{ redirect_to }}" class="form-horizontal">
-  {% csrf_token %}
-  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-  <div class="row">
-    <div class="grapevine-form register-form jumbotron">
+
+<div class="jumbotron">
+  <form class="form-horizontal" role="form" method="POST" action=".?next={{ redirect_to }}">
+    {% csrf_token %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <div class="form-group">
-      <label for="username" class="control-label col-xs-4">Username</label>
-      <div class="col-xs-7">
-        <input type="text" class="form-control" id="username" name="username" placeholder="Username..."/>
+      <label class="control-label col-sm-2" for="username">Username</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="username" id="username" placeholder="Choose Username">
       </div>
     </div>
 
     <div class="form-group">
-      <label for="password" class="control-label col-xs-4">Password</label>
-      <div class="col-xs-7">
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password..."/>
+      <label class="control-label col-sm-2" for="password">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Choose Password">
       </div>
     </div>
 
     <div class="form-group">
-      <label for="repeat_password" class="control-label col-xs-4">Repeat Password</label>
-      <div class="col-xs-7">
-        <input type="password" class="form-control" id="repeat_password" name="repeat_password" placeholder="Repeat Password..."/>
+      <label class="control-label col-sm-2" for="repeat-password">Repeat Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" name="repeat_password" id="repeat_password" placeholder="Repeat Password">
       </div>
     </div>
 
     <div class="form-group">
-      <label for="invite-key" class="control-label col-xs-4">Invite Key</label>
-      <div class="col-xs-7">
-        <input type="text" class="form-control" id="invite-key" name="invite-key" placeholder="Invite Key"/>
+      <label class="control-label col-sm-2" for="repeat-password">Invite Key</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"  name="invite_key" id="invite-key" placeholder="Invite Key">
       </div>
     </div>
 
     <div class="form-group">
-      <div class="col-xs-offset-4 col-xs-7">
-        <div class="checkbox">
-          <label><input type="checkbox">By clicking this check box you.... (Finish this)</label>
-        </div>
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">Register</button>
       </div>
-
-      <br/><br/>
-
-      <div class="form-group">
-        <div class="col-xs-offset-4 col-xs-7">
-          <button type="submit" class="btn btn-primary">Register Now</button>
-        </div>
-      </div>
-
-      <p>Already Registered? <a href="{% url 'account:login' %}">Login Here</a></p>
     </div>
-  </div>
+  </form>
 </div>
+
 {% endblock %}
