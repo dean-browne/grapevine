@@ -1,14 +1,10 @@
 """
+    Testing the invite key checking upon registration
+    The code in register is getting ugly with all the if / elses
+    Need to check out class based views for django and update at least
+    the register function to a class if not all the views in account.
 
-This is starting to get messy... In particular the register method
-For now i might create some helper functions for the registser function
-But I think it would be best to look into some class based view system
-
-Need to test the key generation for users!
-
-At the moment python anywhere seems to be having some issues with the most
-recently uploaded code.. Perhaps the issue is on their side?? Who knows
-
+    If it is not too difficult I will probably update all the views to class based views
 """
 
 from django.shortcuts import render
@@ -70,6 +66,7 @@ def register(request):
         username = request.POST['username']
         password = request.POST['password']
         repeat_password = request.POST['repeat_password']
+        requested_key = request.POST['invite_key']
 
         # If the passwords match, hash the password and create the database user
         if password == repeat_password:
@@ -86,21 +83,26 @@ def register(request):
                 print "[+] Error: Username already exists!"
                 return render(request, 'account/register.html', {'error_message': error_message})
 
-            # Create the django user as normal but use the encrypted username
-            new_user = User.objects.create_user(username=hashed_username,
-                                            password=password)
+            if is_key_valid(requested_key):
+                # Create the django user as normal but use the encrypted username
+                new_user = User.objects.create_user(username=hashed_username,
+                                                password=password)
 
-            # Add the user to the user group
-            group = Group.objects.get(name='users')
-            group.user_set.add(new_user)
+                # Add the user to the user group
+                group = Group.objects.get(name='users')
 
-            user = authenticate(username=hashed_username, password=password)
-            if user is not None:
-                if user.is_active:
-                    auth_login(request, user)
+                group.user_set.add(new_user)
+                user = authenticate(username=hashed_username, password=password)
+                if user is not None:
+                    if user.is_active:
+                        auth_login(request, user)
 
-            return HttpResponseRedirect(reverse('home:index'))
+                return HttpResponseRedirect(reverse('home:index'))
 
+            # If the key is not valid
+            else:
+                error_message = "Invalid Invite Key"
+                return render(request, 'account/register.html', {'error_message': error_message})
 
         else:
             print "[-] Passwords don't match"
@@ -110,6 +112,26 @@ def register(request):
     else:
         return render(request, 'account/register.html')
 
+
+"""
+    Helper function for register
+    Determines if the invite key used by the registering user is valid or not!
+"""
+def is_key_valid(requested_key):
+    print "[+] Checking if key is valid: " + requested_key
+    invite_key_list = InviteKey.objects.filter(is_used=False)
+    for invite_key in invite_key_list:
+        if requested_key == invite_key.invite_key:
+            print "[+] Key is valid!"
+            """
+            Delete the key from the database!!!!!!!!!
+            Learn how to delete django items from the database
+            """
+            invite_key.delete()
+            return True
+
+    print "[+] Key is invalid"
+    return False
 
 
 """
