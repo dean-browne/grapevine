@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="row">
+  <div class="col-md-12">
+    <h1>Information is power. But like all power, there are those who want to keep it for themselves.</h1>
+    <p>-Aaron Swartz</p>
+  </div>
+</div>
 <div class="jumbotron">
   <form class="form-horizontal" role="form" method="POST" action=".?next={{ redirect_to }}">
     {% csrf_token %}
