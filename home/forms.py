@@ -1,3 +1,5 @@
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+
 from django import forms
 from .models import Post, Comment
 
@@ -11,7 +13,7 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('post',)
         widgets = {
-            'post': forms.Textarea(attrs={'class': 'post-form-textarea'}),
+            'post': SummernoteWidget(attrs={'height': '400px'}),
         }
 
 
