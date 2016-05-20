@@ -1,3 +1,6 @@
+# TODO There appears to be an issue with summernote handling the upload of files....
+# It just bombs out and displays a senseless error
+
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 from django import forms
@@ -11,9 +14,9 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('post',)
+        fields = ('title', 'post')
         widgets = {
-            'post': SummernoteWidget(attrs={'height': '400px'}),
+            'post': SummernoteWidget(attrs={'width': '100%', 'height': '400px'}),
         }
 
 
