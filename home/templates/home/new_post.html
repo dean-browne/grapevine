@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>New Post</h2>
+<div class="row">
+  <div class="col-md-12">
+    <h2>New Post</h2>
+</div>
+</div>
 
+
+<div class="col-md-12">
 {% if error_message %} <p><strong>{{ error_message }}</strong></p>{% endif %}
-
 <!-- TODO  The foobar safe token might be wrong need to look that up on the summernote website later!-->
 <form action="{% url 'home:new_post' %}" method="POST" class="post-form">
   {% csrf_token %}
@@ -12,6 +17,7 @@
   {{ post_form.as_p }}
   <button type="submit" class="btn btn-primary">Add Post</button>
 </form>
+</div>
 
 <!--
 <div class="jumbotron">
