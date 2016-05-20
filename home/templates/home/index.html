@@ -11,11 +11,13 @@
           alt="Image!" width="200" height="200">
         </div> -->
         <p>{{ post.post }}</p>
-        <p>Posted on: {{ post.date }}</p>
-        <p>Votes: {{ post.votes }}</p>
+        <!--<p>Posted on: {{ post.date }}</p> -->
+        <!--<p>Votes: {{ post.votes }}</p> -->
         <p><a href="{% url 'home:detail' post.id %}">(Num)Comments</a></p>
-        <a href="#">Vote up</a>
-        <a href="#">Vote Down</a>
+        <!--<a href="#">Vote up</a>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+
+        <a href="#">Vote Down</a> -->
       </div>
     </div>
   </div>
