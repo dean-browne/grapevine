@@ -1,8 +1,3 @@
-# TODO There appears to be an issue with summernote handling the upload of files....
-# It just bombs out and displays a senseless error
-
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
-
 from django import forms
 from .models import Post, Comment
 
@@ -16,7 +11,7 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('post',)
         widgets = {
-            'post': SummernoteWidget(attrs={'width': '100%', 'height': '400px'}),
+            'post': forms.Textarea(attrs={'class': 'comment-form-textarea'}),
         }
 
 

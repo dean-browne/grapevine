@@ -31,9 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django_summernote',
-    'django_bleach',
-    'fontawesome',
     'account.apps.AccountConfig',
     'home.apps.HomeConfig',
     'django.contrib.admin',

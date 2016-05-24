@@ -23,8 +23,4 @@ urlpatterns = [
     url(r'^', include('home.urls')),
     # Account
     url(r'^account/', include('account.urls')),
-
-    # Add support for summernote
-    url(r'^summernote/', include('django_summernote.urls')),
-
 ]
