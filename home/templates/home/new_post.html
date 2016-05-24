@@ -14,44 +14,10 @@
 
    <div class="form-group">
      <div class="col-sm-offset-2 col-sm-10">
-       <button type="submit" class="btn btn-primary">Log In</button>
+       <button type="submit" class="btn btn-primary">Post</button>
      </div>
    </div>
   </form>
 </div>
 
-
-<!--
-<div class="col-md-12">
-{% if error_message %} <p><strong>{{ error_message }}</strong></p>{% endif %}
-
-<form action="{% url 'home:new_post' %}" method="POST" class="post-form">
-  {% csrf_token %}
-  {{ foobar|safe }}
-  {{ post_form.as_p }}
-  <button type="submit" class="btn btn-primary">Add Post</button>
-</form>
-</div>
--->
-<!--
-<div class="jumbotron">
-  <form class="form-horizontal" role="form" method="POST" action=".?next={{ redirect_to }}">
-    {% csrf_token %}
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-   <div class="form-group">
-     <label class="control-label col-sm-2" for="username">Post</label>
-     <div class="col-sm-10">
-       <textarea class="form-control" name="post" id="post"></textarea>
-     </div>
-   </div>
-
-   <div class="form-group">
-     <div class="col-sm-offset-2 col-sm-10">
-       <button type="submit" class="btn btn-primary">Log In</button>
-     </div>
-   </div>
-  </form>
-</div>
--->
 {% endblock %}

@@ -52,3 +52,9 @@ p {
 .post-img {
   float: right;
 }
+
+/* Currently only used for the bitcoin address but this might look good elsewhere too */
+.bigger-p {
+  font-size: 1.125em;
+  color: #6D6DDC;
+}

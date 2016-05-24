@@ -5,19 +5,14 @@
   <div class="row">
     <div class="col-md-12">
       <div class="jumbotron">
-        <!--
-        <div class="post-img">
-          <img class="img-circle" src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fa666.phobos.apple.com%2Fus%2Fr30%2FPurple3%2Fv4%2Ff4%2F0b%2F51%2Ff40b5105-415d-36e9-fe1b-158612923c34%2Fimageeditor.512x512-75.png&f=1"
-          alt="Image!" width="200" height="200">
-        </div> -->
         <p>{{ post.post }}</p>
-        <!--<p>Posted on: {{ post.date }}</p> -->
-        <!--<p>Votes: {{ post.votes }}</p> -->
-        <p><a href="{% url 'home:detail' post.id %}">(Num)Comments</a></p>
-        <!--<a href="#">Vote up</a>
-        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+        <!-- TODO  Sort out these up and down arrows and make them look sweet!-->
+        <a href="#"><i class="fa fa-arrow-circle-up fa-3x fa-fw"></i></a>
+        <a href="#"><i class="fa fa-arrow-circle-down fa-3x fa-fw"></i></a>
 
-        <a href="#">Vote Down</a> -->
+        <a href="{% url 'home:detail' post.id %}" class="btn btn-primary"><i class="fa fa-comments fa-fw"></i>(Num) Add Comment</a>
+        <!-- TODO If the current user is equal to the user that created the post add a delete button-->
+        <a href="{% url 'home:detail' post.id %}" class="btn btn-danger"><i class="fa fa-remove fa-fw"></i>Delete Post</a>
       </div>
     </div>
   </div>

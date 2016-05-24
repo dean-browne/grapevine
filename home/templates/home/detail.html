@@ -9,11 +9,13 @@
       <p>{{ post.post }}</p>
       <p>Posted on: {{post.date }}</p>
       <p>Votes: {{ post.votes }}</p>
-      <a href="#">Vote up</a>
-      <a href="#">Vote Down</a>
+      <a href="#"><i class="fa fa-arrow-circle-up fa-3x fa-fw"></i></a>
+      <a href="#"><i class="fa fa-arrow-circle-down fa-3x fa-fw"></i></a>
     </div>
   </div>
 </div>
+
+
 
 <div class="comment-form">
     {% if user.is_authenticated %}
